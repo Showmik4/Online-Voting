@@ -31,18 +31,18 @@
         @endif
        
         <form action="{{url('uploadpresident')}}" method="POST" enctype="multipart/form-data">
-         
+          <div class="form-group">
 
           @csrf
         <div>
          <label>Name</label>
-         <input style="color: blue" type="text"  name="name" placeholder="name" required> 
+         <input class="form-control" style="color: blue" type="text"  name="name" placeholder="name" required> 
     
         </div>
     
         <div>
             <label>Position</label>
-            <input style="color: blue" type="text"  name="position" placeholder="Position" required> 
+            <input class="form-control" style="color: blue" type="text"  name="position" placeholder="Position" required> 
        
            </div>
     
@@ -50,23 +50,24 @@
 
            <div>
             <label>Image</label>
-            <input style="color: blue" type="file"  name="image"  required> 
+            <input class="form-control" style="color: blue" type="file"  name="image"  required> 
        
            </div>
            
          
            
            <div>
-           <input style="color: black" type="submit" value="Save">
+           <input  class="btn btn-info" style="color: black" class="btn btn-info" type="submit" value="Save">
+           
     
            </div>
     
         </form>
-
+      </div>
       
         <div id="d1">
       <div style="background-color: black">
-        <table style="color: blue">
+        <table style="color: blue" class="table">
         <tr align="center">
          <th style="padding: 30px">Name</th>
   
@@ -86,9 +87,9 @@
                <td style="padding: 30px"> {{$datas->name}} </td>
                <td style="padding: 30px"> {{$datas->position}} </td>
            
-               <td style="padding: 30px"><img height="100px" width="100px" src="/presidentimage/{{$datas->image}}"> </td>
+               <td style="padding: 30px"><img class="img-rounded" alt="Cinque Terre" width="304" height="236" src="/presidentimage/{{$datas->image}}"> </td>
                <td style="padding: 30px"> {{$datas->total_votes}} </td>
-               <td style="padding: 30px"><a href="{{url('/delete_president',$datas->id)}}">Delete</a></td>
+               <td  style="padding: 30px"><a href="{{url('/delete_president',$datas->id)}}">Delete</a></td>
                <td style="padding: 30px"><a href="{{url('/Update_president',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach

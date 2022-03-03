@@ -9,7 +9,7 @@
       <title> Admin</title>
       <style>
        #d1{
-         width: 900px;height: 300px;
+         width: 960px;height: 500px;
          overflow: scroll;
 
      
@@ -30,54 +30,57 @@
              {{session()->get('message')}}
             </div>
             @endif
+
         <form action="{{url('uploadvoter')}}" method="POST" enctype="multipart/form-data">
-        
+
+          <div class="form-group">
           @csrf
-        <div>
-         <label><P>Name</P></label>
-         <input style="color: blue" type="text"  name="name" placeholder="name" required> 
+        <div class="col-xs-4">
+         <label for="name"><P>Name</P></label>
+         <input style="color: blue" type="text"  class="form-control"  name="name" placeholder="name" required> 
     
         </div>
     
-        <div>
-            <label>Email</label>
-            <input style="color: blue" type="text"  name="email" placeholder="Email" required> 
+        <div class="col-xs-4">
+            <label for="email">Email</label>
+            <input style="color: blue" type="text"  class="form-control" name="email" placeholder="Email" required> 
        
            </div>
     
          
 
-           <div>
-            <label>Phone</label>
-            <input style="color: blue" type="text"  name="phone"  required> 
+           <div class="col-xs-4">
+            <label for="phone">Phone</label>
+            <input style="color: blue" type="text"  class="form-control" name="phone" placeholder="Phone" required> 
        
            </div>
            
-           <div>
-            <label>Adress</label>
-            <input style="color: blue" type="text"  name="address"  required> 
+           <div class="col-xs-4">
+            <label for="address">Adress</label>
+            <input style="color: blue" type="text"  class="form-control" name="address" placeholder="Address" required> 
        
            </div>
 
-           <div>
-            <label>Password</label>
-            <input style="color: blue" type="text"  name="password"  required> 
+           <div class="col-xs-4">
+            <label for="password">Password</label>
+            <input style="color: blue" type="text"  class="form-control" name="password" placeholder="Password"  required> 
        
            </div>
            
          
            
            <div>
-           <input style="color: black" type="submit" value="Save">
+           <input style="color: black" class="btn btn-info" type="submit" value="Save">
     
            </div>
           
         </form>
+      </div>
 
         <div id="d1">
-       
+      <div class="container" >
       <div style="background-color: black">
-        <table style="color: blue">
+        <table style="color: blue" class="table">
         <tr align="center">
          <th style="padding: 30px" >Name</th>
   
@@ -102,7 +105,7 @@
                <td style="padding: 30px"> {{$datas->phone}} </td>
                <td style="padding: 30px"> {{$datas->address}} </td>
               
-               <td style="padding: 30px"><a href="{{url('/delete_voter',$datas->id)}}">Delete</a></td>
+               <td style="padding: 30px" ><a href="{{url('/delete_voter',$datas->id)}}">Delete</a></td>
                <td style="padding: 30px"><a href="{{url('/update_voters',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach
@@ -112,7 +115,7 @@
   
   
         </table>
-     
+      </div>
       </div>
       </div>
         </div>
