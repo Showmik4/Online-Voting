@@ -9,7 +9,7 @@
       <title> Admin</title>
       <style>
        #d1{
-         width: 800px;height: 500px;
+         width:800px;height: 500px;
          overflow: scroll;
 
      
@@ -31,7 +31,7 @@
             </div>
             @endif
 
-        <form action="{{url('uploadvoter')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{url('uploadapplicants')}}" method="POST" enctype="multipart/form-data">
 
           <div class="form-group">
           @csrf
@@ -79,7 +79,7 @@
 
         <div id="d1">
       <div class="container" >
-      <div style="background-color: black;text-align:center">
+      <div style="background-color: black ;text-align:center">
         <table style="color: blue" class="table">
         <tr align="center">
          <th style="padding: 30px" >Name</th>
@@ -105,8 +105,8 @@
                <td style="padding: 30px"> {{$datas->phone}} </td>
                <td style="padding: 30px"> {{$datas->address}} </td>
               
-               <td style="padding: 30px" ><a href="{{url('/delete_voter',$datas->id)}}">Delete</a></td>
-               <td style="padding: 30px"><a href="{{url('/update_voters',$datas->id)}}">Update</a></td>
+               <td style="padding: 30px" ><a href="{{url('/delete_applicants',$datas->id)}}">Delete</a></td>
+               <td style="padding: 30px"><a href="{{url('/update_applicants',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach
       

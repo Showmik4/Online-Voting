@@ -53,65 +53,33 @@
           <span class="nav-link">Navigation</span>
         </li>
        
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="{{url('/get_home')}}">
+            <span class="menu-icon">
+              <i class="mdi mdi-playlist-play"></i>
+            </span>
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
         
         <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('/voters')}}">
+          <a class="nav-link" href="{{url('/get_ballot')}}">
             <span class="menu-icon">
               <i class="mdi mdi-playlist-play"></i>
             </span>
-            <span class="menu-title"> Voters</span>
+            <span class="menu-title">Ballot</span>
           </a>
         </li>
-
+        
         <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('/applicants')}}">
-            <span class="menu-icon">
-              <i class="mdi mdi-playlist-play"></i>
-            </span>
-            <span class="menu-title">Applicants</span>
-          </a>
-        </li>
-
-
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('/viewpcandidate')}}">
-            <span class="menu-icon">
-              <i class="mdi mdi-table-large"></i>
-            </span>
-            <span class="menu-title">President Candidates</span>
-          </a>
-        </li>
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('/get_position')}}">
+          <a class="nav-link" href="pages/charts/chartjs.html">
             <span class="menu-icon">
               <i class="mdi mdi-chart-bar"></i>
             </span>
-            <span class="menu-title">Positions</span>
+            <span class="menu-title">Centers</span>
           </a>
        
-        </li>
-     
-       
-
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('/get_party')}}">
-            <span class="menu-icon">
-              <i class="mdi mdi-chart-bar"></i>
-            </span>
-            <span class="menu-title">Party</span>
-          </a>
-       
-        </li>
-
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('/get_application')}}">
-            <span class="menu-icon">
-              <i class="mdi mdi-chart-bar"></i>
-            </span>
-            <span class="menu-title">Applications</span>
-          </a>
-       
-        </li>
+        
      
       </ul>
     </nav>

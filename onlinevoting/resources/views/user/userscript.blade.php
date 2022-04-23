@@ -1,4 +1,4 @@
-<script src="assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="admin/assets/vendors/chart.js/Chart.min.js"></script>
@@ -18,4 +18,4 @@
    
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="admin/assets/js/dashboard.js"></script>
+    <script src="assets/js/dashboard.js"></script>
