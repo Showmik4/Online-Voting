@@ -10,15 +10,15 @@
       <!-- plugins:css -->
       <style>
         #d1{
-          width: 980px;height: 4000px;
+          width: 800px;height:300px;
           overflow: scroll;
         }
 
         input[type=text]select{
         
-          width: 20%;
-          padding: 6px 10px;
-          margin: 8px;
+          width: 40%;
+          padding: 10px 12px;
+          margin: 10px;
           display: inline-block;
 
           
@@ -101,50 +101,7 @@
         </form>
       </div>
       
-        <div id="d1">
-          <h1>Application Data</h1>
-      <div style="background-color: black">
-        <table style="color: blue" class="table">
-        <tr align="center">
-         <th style="padding: 30px">Name</th>
-  
-         <th style="padding: 30px">Email</th>
-
-
-       
-         <th style="padding: 30px">Phone</th>
-        
-         <th style="padding: 30px">Address</th>
-         <th style="padding: 30px">Age</th>
-         <th style="padding: 30px">Position ID</th>
-         <th style="padding: 30px">Party ID</th>
-        </tr>
-       
-  
-          @foreach ($data as $datas)
-              <tr>
-               <td style="padding: 30px"> {{$datas->name}} </td>
-               <td style="padding: 30px"> {{$datas->email}} </td>
-               <td style="padding: 30px"> {{$datas->phone}} </td>
-               <td style="padding: 30px"> {{$datas->address}} </td>
-               <td style="padding: 30px"> {{$datas->age}} </td>
-               <td style="padding: 30px"> {{$datas->po_id}} </td>
-               <td style="padding: 30px"> {{$datas->pa_id}} </td>
-                      
-               <td  style="padding: 30px"><a href="{{url('/delete_president',$datas->id)}}">Delete</a></td>
-               <td style="padding: 30px"><a href="{{url('/Update_president',$datas->id)}}">Update</a></td>
-              </tr >
-          @endforeach
       
-  
-       
-  
-  
-        </table>
-     
-      </div>
-
-        </div>
       </div>
       <!-- container-scroller -->
       <!-- plugins:js -->

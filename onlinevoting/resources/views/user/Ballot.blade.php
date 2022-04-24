@@ -8,7 +8,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Ballot</title>
       <style>
-      
+      table{
+        background-color:beige
+      }
         </style>
       <!-- plugins:css -->
       @include('user.usercss')

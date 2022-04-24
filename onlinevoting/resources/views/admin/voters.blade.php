@@ -9,16 +9,25 @@
       <title> Admin</title>
       <style>
        #d1{
-         width: 800px;height: 500px;
+         width: 800px;height: 200px;
          overflow: scroll;
 
      
        }
+
+       table{
+         background-color: aquamarine
+       }
+.body{
+
+  background-color: antiquewhite
+}
+
         </style>
       <!-- plugins:css -->
       @include('admin.admincss')
     </head>
-    <body>
+    <body class="body">
   
         <div class="container-scroller">
       @include('admin.sidebar')
@@ -105,8 +114,8 @@
                <td style="padding: 30px"> {{$datas->phone}} </td>
                <td style="padding: 30px"> {{$datas->address}} </td>
               
-               <td style="padding: 30px" ><a href="{{url('/delete_voter',$datas->id)}}">Delete</a></td>
-               <td style="padding: 30px"><a href="{{url('/update_voters',$datas->id)}}">Update</a></td>
+               <td style="padding: 30px" ><a class="btn btn-danger" href="{{url('/delete_voter',$datas->id)}}">Delete</a></td>
+               <td style="padding: 30px"><a class="btn btn-success" href="{{url('/update_voters',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach
       

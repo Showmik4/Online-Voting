@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Candidates;
 use App\Models\Party;
 use App\Models\Pcandidate;
@@ -345,7 +346,45 @@ public function Get_Application(){
 
 
 }
+ 
+public function approve_application($id)
+{
+  
+    $data=Application::find($id);
+    $data->status='Approve';
+    $data->save();
+    return redirect()->back();
+
+
+}
+
+public function cancelled_application($id)
+{
+  
+    $data=Application::find($id);
+    $data->status='Cancelled';
+    $data->save();
+    return redirect()->back();
+
+
+}
+
+
+public function All_Application(){
+
+   $data=DB::table('appliation')
    
+   ->join('positions','appliation.po_id','positions.id')
+   ->join('party','appliation.pa_id','party.id')
+   ->select('appliation.*','positions.description','party.name')->get();
+   
+   return view('Candidate.AllApplication',compact('data'));
+
+
+
+}
+
+
 
 
 }

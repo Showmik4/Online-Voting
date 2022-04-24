@@ -73,8 +73,8 @@
                <td style="padding: 30px"> {{$datas->name}} </td>
               
                       
-               <td  style="padding: 30px"><a href="{{url('/delete_party',$datas->id)}}">Delete</a></td>
-               <td style="padding: 30px"><a href="{{url('/update_party',$datas->id)}}">Update</a></td>
+               <td  style="padding: 30px"><a class="btn btn-danger" href="{{url('/delete_party',$datas->id)}}">Delete</a></td>
+               <td style="padding: 30px"><a class="btn btn-success" href="{{url('/update_party',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach
       

@@ -82,6 +82,13 @@
             <span class="menu-title">Application </span>
           </a>
        
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('/all_application')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">All Application </span>
+            </a>
         
      
       </ul>

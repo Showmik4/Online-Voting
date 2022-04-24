@@ -70,7 +70,9 @@ Route::get('/view_party', 'CandidateController@View_Party');//View from candidat
 
 //=================Application======================//
 Route::get('/get_application', 'HomeController@Get_Application');
-
+Route::get('/all_application', 'HomeController@All_Application');
+Route::get('/approve_application/{id}', 'HomeController@approve_application');
+Route::get('/cancelled_application/{id}', 'HomeController@cancelled_application');
 
 //=====================Candidate=========================//
 Route::get('/applicants', 'HomeController@applicants');

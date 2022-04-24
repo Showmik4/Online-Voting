@@ -14,6 +14,10 @@
 
      
        }
+
+       table{
+         background-color: beige
+       }
         </style>
       <!-- plugins:css -->
       @include('admin.admincss')
@@ -105,8 +109,8 @@
                <td style="padding: 30px"> {{$datas->phone}} </td>
                <td style="padding: 30px"> {{$datas->address}} </td>
               
-               <td style="padding: 30px" ><a href="{{url('/delete_applicants',$datas->id)}}">Delete</a></td>
-               <td style="padding: 30px"><a href="{{url('/update_applicants',$datas->id)}}">Update</a></td>
+               <td style="padding: 30px" ><a class="btn btn-danger" href="{{url('/delete_applicants',$datas->id)}}">Delete</a></td>
+               <td style="padding: 30px"><a class="btn btn-success" href="{{url('/update_applicants',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach
       

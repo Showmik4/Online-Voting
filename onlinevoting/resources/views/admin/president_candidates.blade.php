@@ -13,6 +13,9 @@
           width: 900px;height: 300px;
           overflow: scroll;
         }
+table{
+  background-color: cornflowerblue
+}
          </style>
       @include('admin.admincss')
 
@@ -66,9 +69,9 @@
       </div>
       
         <div id="d1">
-      <div style="background-color: black">
+      <div style="background-color: black;text-align:center">
         <table style="color: blue" class="table">
-        <tr align="center">
+        <tr>
          <th style="padding: 30px">Name</th>
   
          <th style="padding: 30px">Position</th>
@@ -89,8 +92,8 @@
            
                <td style="padding: 30px"><img class="img-rounded" alt="Cinque Terre" width="304" height="236" src="/presidentimage/{{$datas->image}}"> </td>
                <td style="padding: 30px"> {{$datas->total_votes}} </td>
-               <td  style="padding: 30px"><a href="{{url('/delete_president',$datas->id)}}">Delete</a></td>
-               <td style="padding: 30px"><a href="{{url('/Update_president',$datas->id)}}">Update</a></td>
+               <td  style="padding: 30px"><a class="btn btn-danger" href="{{url('/delete_president',$datas->id)}}">Delete</a></td>
+               <td style="padding: 30px"><a class="btn btn-success" href="{{url('/Update_president',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach
       
