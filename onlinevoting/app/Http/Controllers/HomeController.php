@@ -30,7 +30,11 @@ class HomeController extends Controller
 
       if (Auth::id()) {
 
+         
+
          if (Auth::user()->usertype == '0') {
+
+            //$users=User::find(Auth::user());
             return view('admin.adminhome');
          } 
          
@@ -44,11 +48,14 @@ class HomeController extends Controller
          
          else {
 
-            $users = User::find(Auth::user());
-            return view('user.userhome', compact('users'));
+          
+          
+            return view('user.userhome');
          }
       }
    }
+
+  
 
    public function viewpcandidate()
    {
@@ -57,7 +64,16 @@ class HomeController extends Controller
    }
    public function uploadpresident(Request $request)
    {
-
+      $validate=$request->validate([
+         'name' => 'required',
+         'position' => 'required',
+         'image' => 'required',
+      
+        
+        
+     ]);
+    
+if($validate){
       $data = new Pcandidate();
       $image = $request->image;
       $imagename = time() . '.' . $image->getClientOriginalExtension();
@@ -68,6 +84,10 @@ class HomeController extends Controller
       $data->total_votes = $request->total_votes;
       $data->save();
       return redirect()->back()->with('message', 'President Added successfully');
+}
+else{
+   return $request->input();
+}
    }
 
    public function update_president($id)
@@ -90,7 +110,7 @@ class HomeController extends Controller
 
          $imagename = time() . '.' . $image->getClientoriginalExtension();
 
-         $request->image->move('chefimage', $imagename);
+         $request->image->move('presidentimage', $imagename);
          $data->image = $imagename;
       }
       $data->save();
@@ -121,6 +141,16 @@ class HomeController extends Controller
    public function uploadvoter(Request $request)
    {
 
+      $validate=$request->validate([
+         'name' => 'required',
+         'email' => 'required',
+         'phone' => 'required',
+         'address' => 'required',
+         'password' => 'required',
+        
+     ]);
+    
+if($validate){
       $data = new User();
 
 
@@ -132,6 +162,10 @@ class HomeController extends Controller
       $data->usertype = '1';
       $data->save();
       return redirect()->back()->with('message', 'Voters Added successfully');
+}
+else{
+   return $request->input();
+}
    }
 
 
@@ -168,7 +202,7 @@ class HomeController extends Controller
       return redirect()->back()->with('message', 'Voters Deleted successfully');
    }
 
-
+//==============================Position=====================//
    public function Get_Position()
    {
 
@@ -179,6 +213,17 @@ class HomeController extends Controller
    public function Upload_Position(Request $request)
    {
 
+      $validate=$request->validate([
+         'description' => 'required',
+         'max_votes' => 'required',
+         'priority'=>'required'
+     ]);
+
+   
+     if($validate){
+
+    
+
       $data = new Position();
 
 
@@ -188,9 +233,47 @@ class HomeController extends Controller
 
       $data->save();
       return redirect()->back()->with('message', 'Position Added successfully');
+     }
+
+     else{
+        return $request->input();
+     }
+   
+   }
+
+   public function update_position($id)
+   {
+
+      $data = Position::find($id);
+      return view('admin.Update_Position', compact('data'));
+   }
+
+   public function edit_position(Request $request, $id)
+   {
+
+      $data = Position::find($id);
+
+
+      $data->description = $request->description;
+      $data->max_votes = $request->max_votes;
+      $data->priority = $request->priority;
+
+
+      $data->save();
+
+      return redirect()->back()->with('message', 'Position Updated successfully');
    }
 
 
+   public function delete_position($id)
+   {
+      $data = Position::find($id);
+      $data->delete();
+      return redirect()->back()->with('message', 'Position Deleted successfully');
+   }
+
+
+//===============================================Candidate=======================//
    public function Get_Candidate()
    {
 
@@ -200,6 +283,7 @@ class HomeController extends Controller
    public function Upload_Candidate(Request $request)
    {
 
+      
       $data = new Candidates();
       $image = $request->image;
       $imagename = time() . '.' . $image->getClientOriginalExtension();
@@ -232,6 +316,18 @@ class HomeController extends Controller
    public function uploadapplicants(Request $request)
    {
 
+      $validate=$request->validate([
+         'name' => 'required',
+         'email' => 'required',
+      
+         'phone' => 'required',
+         'address' => 'required',
+       
+         'password' => 'required',
+        
+     ]);
+if($validate){
+
       $data = new User();
 
 
@@ -243,6 +339,12 @@ class HomeController extends Controller
       $data->usertype = '2';
       $data->save();
       return redirect()->back()->with('message', 'Applicants Added successfully');
+
+}
+
+else{
+   return $request->input();
+}
    }
 
 
@@ -291,13 +393,27 @@ class HomeController extends Controller
    public function Upload_Party(Request $request)
    {
 
+      $validate=$request->validate([
+         'party_name' => 'required',
+        
+     ]);
+
+     if($validate){
+
       $data = new Party();
 
 
-      $data->name = $request->name;
+      $data->party_name = $request->party_name;
     
       $data->save();
       return redirect()->back()->with('message', 'Party Added successfully');
+     }
+
+     else{
+
+      return $request->input();
+     }
+     
    }
 
 
@@ -339,7 +455,7 @@ public function Get_Application(){
    
    ->join('positions','appliation.po_id','positions.id')
    ->join('party','appliation.pa_id','party.id')
-   ->select('appliation.*','positions.description','party.name')->get();
+   ->select('appliation.*','positions.description','party.party_name')->get();
    
    return view('admin.GetApplication',compact('data'));
 
@@ -376,7 +492,7 @@ public function All_Application(){
    
    ->join('positions','appliation.po_id','positions.id')
    ->join('party','appliation.pa_id','party.id')
-   ->select('appliation.*','positions.description','party.name')->get();
+   ->select('appliation.*','positions.description','party.party_name')->get();
    
    return view('Candidate.AllApplication',compact('data'));
 
@@ -384,7 +500,20 @@ public function All_Application(){
 
 }
 
+//=======================Result===================//
 
+public function get_result(){
 
+   $data = Pcandidate::all();
+ 
+   return view('admin.result',compact('data'));
+}
+
+public function get_admin_home(){
+
+  
+ 
+   return view('admin.adminhome');
+}
 
 }

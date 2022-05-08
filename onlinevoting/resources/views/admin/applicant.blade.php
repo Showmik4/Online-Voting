@@ -8,12 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title> Admin</title>
       <style>
-       #d1{
-         width:800px;height: 500px;
-         overflow: scroll;
-
-     
-       }
+      
 
        table{
          background-color: beige
@@ -24,7 +19,7 @@
     </head>
     <body>
   
-        <div class="container-scroller">
+        <div class="container-scroller" style="height: 1500px">
       @include('admin.sidebar')
       <div class="container-fluid page-body-wrapper">
       <div style="position: relative; top:60px; right:-150px">
@@ -41,34 +36,34 @@
           @csrf
         <div class="col-xs-4">
          <label for="name"><P>Name</P></label>
-         <input style="color: blue" type="text"  class="form-control"  name="name" placeholder="name" required> 
-    
+         <input style="color: blue" type="text"  class="form-control"  name="name" placeholder="name" > 
+         <span style="color: red">@error('name'){{$message}}@enderror</span>
         </div>
     
         <div class="col-xs-4">
             <label for="email">Email</label>
-            <input style="color: blue" type="text"  class="form-control" name="email" placeholder="Email" required> 
-       
+            <input style="color: blue" type="text"  class="form-control" name="email" placeholder="Email"> 
+            <span style="color: red">@error('email'){{$message}}@enderror</span>
            </div>
     
          
 
            <div class="col-xs-4">
             <label for="phone">Phone</label>
-            <input style="color: blue" type="text"  class="form-control" name="phone" placeholder="Phone" required> 
-       
+            <input style="color: blue" type="text"  class="form-control" name="phone" placeholder="Phone" > 
+            <span style="color: red">@error('phone'){{$message}}@enderror</span>
            </div>
            
            <div class="col-xs-4">
             <label for="address">Adress</label>
-            <input style="color: blue" type="text"  class="form-control" name="address" placeholder="Address" required> 
-       
+            <input style="color: blue" type="text"  class="form-control" name="address" placeholder="Address" > 
+            <span style="color: red">@error('address'){{$message}}@enderror</span>
            </div>
 
            <div class="col-xs-4">
             <label for="password">Password</label>
-            <input style="color: blue" type="text"  class="form-control" name="password" placeholder="Password"  required> 
-       
+            <input style="color: blue" type="text"  class="form-control" name="password" placeholder="Password"> 
+            <span style="color: red">@error('password'){{$message}}@enderror</span>
            </div>
            
          

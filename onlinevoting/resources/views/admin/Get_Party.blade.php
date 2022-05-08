@@ -36,8 +36,10 @@
           @csrf
         <div>
          <label>Name</label>
-         <input class="form-control" style="color: blue" type="text"  name="name" placeholder="Name" required> 
-    
+         <input class="form-control" style="color: blue" type="text"  name="party_name" placeholder="Name"> 
+    <span style="color: red">@error('party_name'){{$message}}
+        
+    @enderror</span>
         </div>
     
       
@@ -70,7 +72,7 @@
   
           @foreach ($data as $datas)
               <tr>
-               <td style="padding: 30px"> {{$datas->name}} </td>
+               <td style="padding: 30px"> {{$datas->party_name}} </td>
               
                       
                <td  style="padding: 30px"><a class="btn btn-danger" href="{{url('/delete_party',$datas->id)}}">Delete</a></td>

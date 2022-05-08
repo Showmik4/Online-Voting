@@ -35,7 +35,7 @@ Route::get('/delete_voter/{id}', 'HomeController@delete_voters');
 Route::get('/give_status/{id}', 'userhomecontroller@give_status');
 
 //=====================User=================//
-Route::get('/profile', 'userhomeController@ShowUser');
+//Route::get('/profile', 'userhomeController@ShowUser');
 Route::get('/get_home', 'userhomeController@Get_Home');
 
 
@@ -56,7 +56,9 @@ Route::post('/upload_position', 'HomeController@Upload_Position');
 //=========================Position==============//
 Route::get('/get_candidate', 'HomeController@Get_Candidate');
 Route::get('/upload_candidate', 'HomeController@Upload_Candidate');
-
+Route::get('/update_position/{id}', 'HomeController@update_position');
+Route::post('/edit_position/{id}', 'HomeController@edit_position');
+Route::get('/delete_position/{id}', 'HomeController@delete_position');
 
 //===================Party=========================//
 Route::get('/get_party', 'HomeController@Get_Party');
@@ -75,6 +77,7 @@ Route::get('/approve_application/{id}', 'HomeController@approve_application');
 Route::get('/cancelled_application/{id}', 'HomeController@cancelled_application');
 
 //=====================Candidate=========================//
+Route::get('/candidatehome', 'CandidateController@CandidateHome');
 Route::get('/applicants', 'HomeController@applicants');
 Route::post('/uploadapplicants', 'HomeController@uploadapplicants');
 Route::get('/update_applicants/{id}', 'HomeController@update_applicants');
@@ -82,13 +85,21 @@ Route::post('/edit_applicants/{id}', 'HomeController@edit_applicants');
 Route::get('/delete_applicants/{id}', 'HomeController@delete_applicants');
 Route::get('/view_position', 'CandidateController@View_Position');
 Route::get('/apply', 'CandidateController@Apply');
+
 Route::post('/uploadapplication', 'CandidateController@uploadapplication');
+Route::get('/update_application/{id}', 'CandidateController@update_applicantion');
+Route::post('/edit_applicantion/{id}', 'CandidateController@edit_applicantion');
+Route::get('/delete_application/{id}', 'CandidateController@delete_application');
 
 
+//=======================Topics=================//
 
+Route::get('/get_topics', 'TopicsController@get_topics');
+Route::post('/vote', 'TopicsController@vote');
 
-
-
+//=========================Result==============//
+Route::get('/get_result', 'HomeController@get_result');
+Route::get('/get_admin_home', 'HomeController@get_admin_home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

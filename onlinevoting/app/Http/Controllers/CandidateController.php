@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class CandidateController extends Controller
 {
+   public function CandidateHome(){
+
+      return view('Candidate.candidatehome');
+   }
     public function View_Position(){
 
         $data=Position::all();
@@ -33,7 +37,18 @@ class CandidateController extends Controller
     public function uploadapplication(Request $request)
     {
  
-       
+      $validate=$request->validate([
+         'name' => 'required',
+         'email' => 'required',
+         'phone' => 'required',
+         'address' => 'required',
+         'age' => 'required',
+         'po_id' => 'required',
+         'pa_id' => 'required',
+        
+     ]);
+
+     if($validate){
 
        $data = new Application();
  
@@ -49,6 +64,10 @@ class CandidateController extends Controller
       
        $data->save();
        return redirect()->back()->with('message', 'Application Added successfully');
+     }
+     else{
+        return $request->input();
+     }
     }
  
  

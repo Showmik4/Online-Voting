@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class userhomecontroller extends Controller
 {
-   public function ShowUser(){
+  /* public function ShowUser(){
 
     $users=User::find(Auth::user());
-    $voterData = $users->where(["vote_status" => 0])->get();
-    if(count($voterData) <= 0){
+    //$voterData = $users->where(["vote_status" => 0])->get();
+   
       return redirect()->back();
-    }
+  
 
     $user = new user;
     $user->where(["vote_status" => 0])->update([
@@ -25,7 +25,7 @@ class userhomecontroller extends Controller
 
     return redirect()->back();
     return view('user.Ballot',compact("users"));
-   }
+   }*/
     
 
 
@@ -45,15 +45,30 @@ class userhomecontroller extends Controller
       //$voterID = Auth::user()->get('id');
       //$voterName = Auth::get('name');
 
-
+     // $voterID=$request->session()->get('id');
+      //$voterName=$request->session()->get('name');
      
+      //$voter = new User();
+     // $voterData = $voter->where(["id"=>$voterID,"name"=>$voterName,"status" => 0])->get();
 
+     $voterData=User::find(Auth::user());
+
+     //$voterID= $request->session()->get('id');
+     //$voterName= $request->session()->get('name');
+
+      if(count($voterData) <= 0){
+        return redirect()->back();
+      }
       
       $data=new Pcandidate();
       //$data=DB::table('pcandidates');
 
-      $user=new User();
-      $vote_status=$request->vote_status;
+      //$loggedUser=Auth::User()->id;
+      //$vote_status = User::where('id', $loggedUser) -> get();
+      //$vote_status=$request->vote_status;
+      //$vote_status=User::find(Auth::user());
+      //$vote_status->vote_status=$request->vote_status;
+
 
        
 
@@ -64,7 +79,7 @@ class userhomecontroller extends Controller
           return redirect()->back();
         }
   
-        if(count($presidentlist) > 0){
+        if(count($voterData)>0 && count($presidentlist) > 0 ){
   
           foreach($presidentlist as $data){
             $presidentTotalvote = $data->total_votes;
@@ -73,13 +88,23 @@ class userhomecontroller extends Controller
         $data->where('id',$id )->update([
           "total_votes" => ( $presidentTotalvote + 1 )
         ]);
+
+        $voter = new User();
+        $voter->where(["status" => 0])->update([
+          "status" => 1
+        ]);
   
       
-  
+        return redirect()->back()->with('message', 'Vote Added successfully');;
       //  $data=DB::table('Pcandidate')->increment('total_votes');
        // $data->save();
-        return redirect()->back();
+        
       }
+
+
+     else{
+       return view('user.userhome');
+     }
 
   
 

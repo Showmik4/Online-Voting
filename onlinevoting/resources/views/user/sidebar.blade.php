@@ -72,11 +72,11 @@
         </li>
         
         <li class="nav-item menu-items">
-          <a class="nav-link" href="pages/charts/chartjs.html">
+          <a class="nav-link" href="{{url('/get_topics')}}">
             <span class="menu-icon">
               <i class="mdi mdi-chart-bar"></i>
             </span>
-            <span class="menu-title">Centers</span>
+            <span class="menu-title">Topics</span>
           </a>
        
         

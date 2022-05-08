@@ -12,10 +12,10 @@
     </head>
     <body>
    
-  
+      <div class="container-scroller">
       @include('admin.sidebar')
   
-   
+     
       <!-- container-scroller -->
       <!-- plugins:js -->
       @include('admin.adminscript')

@@ -14,6 +14,13 @@
           overflow: scroll;
         }
          </style>-->
+        <style>
+          
+          table{
+            border: 2px;
+          }
+          </style>
+
       @include('admin.admincss')
 
     </head>
@@ -36,30 +43,34 @@
           @csrf
         <div>
          <label>Description</label>
-         <input class="form-control" style="color: blue" type="text"  name="description" placeholder="Description" required> 
-    
+         <input class="form-control" style="color: blue" type="text"  name="description" placeholder="Description" > 
+         <span style="color: red">@error('description'){{$message}}
+        
+          @enderror</span>
         </div>
     
         <div>
             <label>Max Votes</label>
-            <input class="form-control" style="color: blue" type="text"  name="max_votes" placeholder="Max Votes" required> 
-       
+            <input class="form-control" style="color: blue" type="text"  name="max_votes" placeholder="Max Votes"> 
+            <span style="color: red">@error('max_votes'){{$message}}        
+              @enderror</span>
            </div>
     
          
 
            <div>
             <label>Priorirty</label>
-            <input class="form-control" style="color: blue" type="text"  name="priority" placeholder="Priorirty"  required> 
-       
+            <input class="form-control" style="color: blue" type="text"  name="priority" placeholder="Priorirty"> 
+            <span style="color: red">@error('priority'){{$message}}
+        
+              @enderror</span>
            </div>
            
          
            
            <div>
            <input  class="btn btn-info" style="color: black" class="btn btn-info" type="submit" value="Save">
-           
-    
+          
            </div>
     
         </form>
@@ -88,8 +99,8 @@
                <td style="padding: 30px"> {{$datas->max_votes}} </td>
                <td style="padding: 30px"> {{$datas->priority}} </td>
                       
-               <td  style="padding: 30px"><a href="{{url('/delete_president',$datas->id)}}">Delete</a></td>
-               <td style="padding: 30px"><a href="{{url('/Update_president',$datas->id)}}">Update</a></td>
+               <td  style="padding: 30px"><a class="btn btn-danger" href="{{url('/delete_position',$datas->id)}}">Delete</a></td>
+               <td style="padding: 30px"><a class="btn btn-primary" href="{{url('/update_position',$datas->id)}}">Update</a></td>
               </tr >
           @endforeach
       

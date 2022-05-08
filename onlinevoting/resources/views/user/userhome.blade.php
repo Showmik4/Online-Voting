@@ -7,8 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Home</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
 
-    @include('user.usercss')
+      .container{
+        padding: 50px 400px;
+        background-color:cadetblue;
+        font-size: 2rem;
+        text-align: center;
+        
+      }
+
+
+
+
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+    </style>
+
+  
 </head>
 <body>
  
@@ -16,7 +45,7 @@
 
   
     
-    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <nav >
         <div class="container-fluid">
           <ul class="navbar-nav">
               @if(Route::has('login'))
@@ -24,6 +53,8 @@
               <x-app-layout>
    
             </x-app-layout>
+
+           
               @else
             <li class="nav-item">
               <a class="nav-link active" href="{{route('login')}}">Login</a>
@@ -39,39 +70,37 @@
         </div>
       </nav>
       <div class="container-scroller">
-      @include('user.sidebar')
-      
-      @foreach($users as $datas)
-      <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-        <div class="card p-4">
-           
-                <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">{{$datas->name}}</span>  </div>
-                <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">{{$datas->email}}</span>  </div>
-                  <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">{{$datas->phone}}</span>  </div>
-                    <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">{{$datas->address}}</span>  </div>
-               <!-- <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> </div>-->
-               <!-- <div class="text mt-3"> <span><br><br> </span> </div>-->
-               
-                <div class=" px-2 rounded mt-4 date "> <span class="join">Voter ID:{{$datas->id}}</span> </div>
-                <div class=" px-2 rounded mt-4 date "> <span class="join">Vote Status:{{$datas->vote_status}}</span> </div>
-      
-              
-                <div><a class="btn btn-success" href="{{url('give_status',$datas->id)}}">Vote</a> </div>
-            </div>
+     
+        <div class="container">
+          
+          <a style="color:green" class="button"  href="{{url('/get_ballot')}}">Ballot</a><br>
+          
+          
+         <h1> Welcome To The Voting Center</h1>
+
+         <div class="bg"></div>
+
+         <img  src="Images/Vote3.jpg"/>
+        
         </div>
-      </div>
+
+
       
+
+
+
+
+    
       
-      
-      @endforeach
-      
-  
+       
 
       </div>
-   
+      </div>
 
-      @include('user.userscript')
- 
+     
+    
+
+ @include('user.userscript')
 </body>
 </html>
 

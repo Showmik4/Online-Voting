@@ -34,7 +34,7 @@
             @csrf
             <div style="padding: 20px">
          <label> Name </label>
-         <input  type="text" name="name"  style="color: black" value="{{$data->name}}" />
+         <input  type="text" name="party_name"  style="color: black" value="{{$data->party_name}}" />
             </div>
 
            

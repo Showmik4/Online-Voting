@@ -9,10 +9,7 @@
       <title> Admin</title>
       <!-- plugins:css -->
       <style>
-        #d1{
-          width: 900px;height: 300px;
-          overflow: scroll;
-        }
+      
 table{
   background-color: cornflowerblue
 }
@@ -22,7 +19,7 @@ table{
     </head>
     <body>
    
-        <div class="container-scroller">
+        <div class="container-scroller" style="height: 1500px">
       @include('admin.sidebar')
       <div class="container-fluid page-body-wrapper">
       <div style="position: relative; top:60px; right:-150px">
@@ -30,31 +27,40 @@ table{
         <div class="alert alert-success">
          <button type="button" class="close" data-dismiss="alert">X</button>
          {{session()->get('message')}}
-        </div>
-        @endif
        
+        </div>
+      
+        @endif
+    <div>
         <form action="{{url('uploadpresident')}}" method="POST" enctype="multipart/form-data">
           <div class="form-group">
-
           @csrf
         <div>
          <label>Name</label>
-         <input class="form-control" style="color: blue" type="text"  name="name" placeholder="name" required> 
-    
+         <input class="form-control" style="color: blue" type="text"  name="name" placeholder="name" > 
+         <span style="color: red">@error('name'){{$message}}
+        
+          @enderror</span>
         </div>
     
         <div>
             <label>Position</label>
-            <input class="form-control" style="color: blue" type="text"  name="position" placeholder="Position" required> 
-       
+            <input class="form-control" style="color: blue" type="text"  name="position" placeholder="Position"> 
+            <span style="color: red">@error('position'){{$message}}
+        
+              @enderror</span>
+                 
+          
            </div>
     
          
 
            <div>
             <label>Image</label>
-            <input class="form-control" style="color: blue" type="file"  name="image"  required> 
-       
+            <input class="form-control" style="color: blue" type="file"  name="image"> 
+            <span style="color: red">@error('image'){{$message}}
+        
+              @enderror</span>
            </div>
            
          
